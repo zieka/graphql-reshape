@@ -1,0 +1,24 @@
+{
+  "name": "@graphql-reshape/transformers",
+  "private": true,
+  "scripts": {
+    "check-types": "tsc --noEmit",
+    "prettier-check": "prettier --config package.json --list-different '{,**/}*.{js,ts,json,graphql}'",
+    "prettier-format": "prettier --config package.json --write '{,**/}*.{js,ts,json,graphql}'"
+  },
+  "peerDependencies": {
+    "graphql": "^14.1.1",
+    "graphql-tools": "^4.0.4"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": true,
+    "arrowParens": "always"
+  }
+}
