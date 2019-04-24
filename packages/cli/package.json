@@ -1,6 +1,5 @@
 {
   "name": "@graphql-reshape/cli",
-  "private": true,
   "version": "0.0.1",
   "bin": {
     "reshape": "./index.js"
