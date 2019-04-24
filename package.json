@@ -6,6 +6,7 @@
 		"check-types": "tsc --noEmit",
 		"prettier-check": "prettier --config package.json --list-different '{,**/}*.{js,ts,json,graphql}'",
 		"prettier-format": "prettier --config package.json --write '{,**/}*.{js,ts,json,graphql}'",
+		"publish": "lerna publish",
 		"test": "jest"
 	},
 	"devDependencies": {

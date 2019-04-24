@@ -1,4 +1,10 @@
 {
   "packages": ["packages/*"],
-  "version": "0.0.0"
+  "version": "independent",
+  "command": {
+    "publish": {
+      "registry": "https://registry.npmjs.org/",
+      "conventionalCommits": true
+    }
+  }
 }
