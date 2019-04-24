@@ -1,6 +1,6 @@
 // Adds @ensureArray directive to all non nullable lists
 // [things!]! -> [things!]! @ensureArray
-import { print } from 'graphql';
+import { print, DocumentNode } from 'graphql';
 import * as path from 'path';
 import * as fs from 'fs';
 import globby from 'globby';
@@ -9,7 +9,9 @@ import * as chalk from 'chalk';
 const { green } = chalk as any;
 const cwd = process.cwd();
 
-export const useTransformer = async (tranformer, includeDefinition = true): Promise<boolean> => {
+type ReshapeTransformer = (schema: string, includeDefinition?: boolean) => [string | DocumentNode, boolean];
+
+export const useTransformer = async (transformer: ReshapeTransformer, includeDefinition = true): Promise<boolean> => {
   /**
    * Gathers the .graphql files and adds ensureArray directive to non nullable lists
    * @param {*} file
@@ -20,7 +22,7 @@ export const useTransformer = async (tranformer, includeDefinition = true): Prom
         const fileStream = fs.createReadStream(file, { encoding: 'utf8' });
         fileStream.on('data', (data: any) => {
           // clean the file path so it is relative to project for ease of reading
-          const [newAST, addedDirective] = tranformer(data, includeDefinition);
+          const [newAST, addedDirective] = transformer(data, includeDefinition);
           if (addedDirective) {
             const newData = new Uint8Array(Buffer.from(print(newAST)));
             fs.writeFile(file, newData, (err: NodeJS.ErrnoException) => {

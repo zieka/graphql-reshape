@@ -5,6 +5,7 @@
     "reshape": "./index.js"
   },
   "scripts": {
+    "build": "tsc",
     "check-types": "tsc --noEmit",
     "prettier-check": "prettier --config package.json --list-different '{,**/}*.{js,ts,json,graphql}'",
     "prettier-format": "prettier --config package.json --write '{,**/}*.{js,ts,json,graphql}'"
@@ -14,11 +15,9 @@
     "@graphql-reshape/transformers": "file:../transformers",
     "chalk": "2.4.2",
     "commander": "2.19.0",
-    "create-ts-index": "1.7.0",
-    "globby": "9.1.0",
+    "globby": "9.2.0",
     "inquirer": "6.2.2",
-    "ts-node": "8.1.0",
-    "typescript": "3.3.3333"
+    "typescript": "3.4.5"
   },
   "prettier": {
     "printWidth": 120,

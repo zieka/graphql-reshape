@@ -1,6 +1,7 @@
 {
   "name": "@graphql-reshape/transformers",
   "version": "0.1.0",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "tsc",
     "check-types": "tsc --noEmit",
