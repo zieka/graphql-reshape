@@ -1,0 +1,1 @@
+directive @ensureArray on FIELD_DEFINITION

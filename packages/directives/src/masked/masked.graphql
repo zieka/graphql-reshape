@@ -1,0 +1,1 @@
+directive @masked(showLast: Int = 4) on FIELD_DEFINITION
