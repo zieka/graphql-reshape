@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "commonjs",
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    "esModuleInterop": false
+  },
+  "exclude": ["node_modules", "**/*.test.*", "dist"],
+  "include": ["src"]
+}

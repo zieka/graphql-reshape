@@ -63,7 +63,7 @@ const handleMainMenu = (answers: any): any => {
   }
 };
 
-const handleWhichMod = (answers: any) => {
+const handleWhichMod = (answers: any): any => {
   if (answers.q1 === QUIT) {
     return Promise.resolve();
   }

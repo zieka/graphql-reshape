@@ -1,4 +1,4 @@
 import { useTransformer } from '../helpers/use-transform';
-import { ensureArrayTransformer } from '@graphql-reshape/transformers/src/ensure-array/ensure-array.transformer';
+import { ensureArrayTransformer } from '@graphql-reshape/transformers';
 
 export const useEnsureArray = (includeDefinition: boolean) => useTransformer(ensureArrayTransformer, includeDefinition);
