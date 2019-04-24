@@ -1,6 +1,6 @@
 {
   "name": "@graphql-reshape/transformers",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "build": "tsc",
     "check-types": "tsc --noEmit",
