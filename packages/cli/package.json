@@ -1,10 +1,10 @@
 {
   "name": "@graphql-reshape/cli",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "bin": {
-		"reshape": "./index.js"
-	},
+    "reshape": "./index.js"
+  },
   "scripts": {
     "check-types": "tsc --noEmit",
     "prettier-check": "prettier --config package.json --list-different '{,**/}*.{js,ts,json,graphql}'",
@@ -14,7 +14,7 @@
     "@graphql-reshape/transformers": "file:../transformers",
     "chalk": "2.4.2",
     "commander": "2.19.0",
-    "create-ts-index":"1.7.0",
+    "create-ts-index": "1.7.0",
     "globby": "9.1.0",
     "inquirer": "6.2.2",
     "ts-node": "8.0.3",

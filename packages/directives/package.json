@@ -1,6 +1,7 @@
 {
   "name": "@graphql-reshape/directives",
   "private": true,
+  "version": "0.0.1",
   "scripts": {
     "check-types": "tsc --noEmit",
     "prettier-check": "prettier --config package.json --list-different '{,**/}*.{js,ts,json,graphql}'",
