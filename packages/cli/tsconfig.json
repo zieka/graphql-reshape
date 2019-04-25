@@ -1,12 +1,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": ".",
     "module": "commonjs",
     "strictNullChecks": false,
     "strictPropertyInitialization": false,
-    "esModuleInterop": false
+    "esModuleInterop": false,
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules", "**/*.test.*", "dist"],
-  "include": ["src"]
+  "include": ["."]
 }

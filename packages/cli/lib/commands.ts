@@ -1,6 +1,7 @@
 import * as commander from 'commander';
 import { interactiveMenu } from './questions';
 import { UNDER_CONSTRUCTION } from './helpers/constants';
+import * as packageContents from '../package.json';
 
 // Mod Command
 commander
@@ -20,7 +21,7 @@ commander
   });
 
 // Version Command
-commander.version(UNDER_CONSTRUCTION, '-v, --version');
+commander.version(packageContents.version, '-v, --version');
 
 // Wildcard Command
 commander.command('*').action(() => interactiveMenu());

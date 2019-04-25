@@ -1,2 +1,5 @@
 node_modules
 **/dist
+packages/cli/**/*.js
+packages/cli/**/*.js.map
+packages/cli/index.js
