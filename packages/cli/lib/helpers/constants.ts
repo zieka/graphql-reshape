@@ -1,10 +1,10 @@
-import * as chalk from 'chalk';
+const { magenta, red } = require('chalk');
 
 export const macOnly = (emoji: string): string => {
   return process.platform === 'darwin' ? emoji : '';
 };
 
-export const ASCII_LOGO = (chalk as any).magenta.bold(`
+export const ASCII_LOGO = magenta.bold(`
     (         (        )          (
     )\\ )      )\\ )  ( /(   (      )\\ )
    (()/( (   (()/(  )\\())  )\\    (()/( (
@@ -13,7 +13,7 @@ export const ASCII_LOGO = (chalk as any).magenta.bold(`
    | _ \\| __|/ __| | || |(_)_\\(_)| _ \\| __|
    |   /| _| \\__ \\ | __ | / _ \\  |  _/| _|
    |_|_\\|___||___/ |_||_|/_/ \\_\\ |_|  |___|
-   ${(chalk as any).red.bold('@graphql-reshape/cli - A tool for modifying schema')}
+   ${red.bold('@graphql-reshape/cli - A tool for modifying schema')}
 `);
 
 export const LIST_TYPE = process.platform === 'win32' ? 'rawlist' : 'list';

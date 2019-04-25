@@ -13,6 +13,7 @@ import {
   UPPER,
   LOWER
 } from './helpers/constants';
+import * as packageContents from '../package.json';
 
 interface Question {
   type: 'text' | 'list' | 'rawlist';
@@ -55,7 +56,7 @@ const handleMainMenu = (answers: any): any => {
     case MOD:
       return inquirer.prompt(WHICH_MOD).then(handleWhichMod);
     case VERSION:
-      return console.log(UNDER_CONSTRUCTION);
+      return console.log(packageContents.version);
     case QUIT:
       return Promise.resolve();
     default:
