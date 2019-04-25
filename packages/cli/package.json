@@ -16,6 +16,7 @@
     "chalk": "2.4.2",
     "commander": "2.19.0",
     "globby": "9.2.0",
+    "graphql": "14.2.1",
     "inquirer": "6.2.2",
     "typescript": "3.4.5"
   },
