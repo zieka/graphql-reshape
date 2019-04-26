@@ -9,9 +9,9 @@ import * as chalk from 'chalk';
 const { green } = chalk as any;
 const cwd = process.cwd();
 
-type ReshapeTransformer = (schema: string, includeDefinition?: boolean) => [string | DocumentNode, boolean];
+type ReshapeTransformer = (schema: string, options: any) => [string | DocumentNode, boolean];
 
-export const useTransformer = async (transformer: ReshapeTransformer, includeDefinition = true): Promise<boolean> => {
+export const useTransformer = async (transformer: ReshapeTransformer, options = {}): Promise<boolean> => {
   /**
    * Gathers the .graphql files and adds ensureArray directive to non nullable lists
    * @param {*} file
@@ -22,7 +22,7 @@ export const useTransformer = async (transformer: ReshapeTransformer, includeDef
         const fileStream = fs.createReadStream(file, { encoding: 'utf8' });
         fileStream.on('data', (data: any) => {
           // clean the file path so it is relative to project for ease of reading
-          const [newAST, addedDirective] = transformer(data, includeDefinition);
+          const [newAST, addedDirective] = transformer(data, options);
           if (addedDirective) {
             const newData = new Uint8Array(Buffer.from(print(newAST)));
             fs.writeFile(file, newData, (err: NodeJS.ErrnoException) => {

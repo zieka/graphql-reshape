@@ -67,10 +67,10 @@ describe('lowerTransformer', () => {
             }
         `;
     // Act
-    const result = lowerTransformer(fixture, true);
+    const result = lowerTransformer(fixture, { includeDefinition: true });
     // Assert
     const expectedSchema = `
-    directive @lower on FIELD_DEFINITION
+            directive @lower on FIELD_DEFINITION
             type thing {
               prop1: String @lower
               prop2: String! @lower

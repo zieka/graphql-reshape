@@ -61,7 +61,7 @@ describe('ensureArrayTransformer', () => {
             }
         `;
     // Act
-    const result = ensureArrayTransformer(fixture, true);
+    const result = ensureArrayTransformer(fixture, { includeDefinition: true });
     // Assert
     const expectedSchema = `
             directive @ensureArray on FIELD_DEFINITION

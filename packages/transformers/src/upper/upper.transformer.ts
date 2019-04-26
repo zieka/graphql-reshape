@@ -10,12 +10,19 @@ import {
 } from 'graphql/language';
 import { TransformerOutput, hasDirective } from '../helpers';
 
+const defaultOptions = {
+  includeDefinition: false
+};
+
+export type UpperTransformerOptions = Partial<typeof defaultOptions>;
+
 /**
  * Transforms: String -> String @upper
  * @param schema schema definition language
- * @param includeDefinition line defining upper
+ * @param userOptions
  */
-export const upperTransformer = (schema: string, includeDefinition: boolean = true): TransformerOutput => {
+export const upperTransformer = (schema: string, userOptions: UpperTransformerOptions = {}): TransformerOutput => {
+  const options = { ...defaultOptions, ...userOptions };
   let ast;
   let addedDirective = false;
 
@@ -80,7 +87,7 @@ export const upperTransformer = (schema: string, includeDefinition: boolean = tr
   };
 
   // include the definition if desired add this to our visitor
-  if (includeDefinition) {
+  if (options.includeDefinition) {
     visitor[Kind.DOCUMENT] = {
       enter: (): any => undefined,
       leave: (node: DocumentNode): any => {

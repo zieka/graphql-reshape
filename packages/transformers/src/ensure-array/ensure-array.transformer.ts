@@ -10,12 +10,21 @@ import {
 } from 'graphql/language';
 import { TransformerOutput, hasDirective } from '../helpers';
 
+const defaultOptions = {
+  includeDefinition: false
+};
+
+export type EnsureArrayTransformerOptions = Partial<typeof defaultOptions>;
 /**
  * Transforms: [x]! -> [x]! @ensureArray
  * @param schema schema definition language
- * @param includeDefinition line defining ensureArray
+ * @param userOptions
  */
-export const ensureArrayTransformer = (schema: string, includeDefinition: boolean = true): TransformerOutput => {
+export const ensureArrayTransformer = (
+  schema: string,
+  userOptions: EnsureArrayTransformerOptions = {}
+): TransformerOutput => {
+  const options = { ...defaultOptions, ...userOptions };
   let ast;
   let addedDirective = false;
 
@@ -76,7 +85,7 @@ export const ensureArrayTransformer = (schema: string, includeDefinition: boolea
   };
 
   // include the definition if desired add this to our visitor
-  if (includeDefinition) {
+  if (options.includeDefinition) {
     visitor[Kind.DOCUMENT] = {
       enter: (): any => undefined,
       leave: (node: DocumentNode): any => {

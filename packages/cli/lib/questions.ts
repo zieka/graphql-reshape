@@ -75,11 +75,11 @@ const handleWhichMod = (answers: any): any => {
     const includeDefinition = followUpAnswers.q1 === YES;
     switch (answers.q1) {
       case ENSURE_ARRAY:
-        return (await import('./actions/use-ensure-array')).useEnsureArray(includeDefinition).catch(console.error);
+        return (await import('./actions/use-ensure-array')).useEnsureArray({ includeDefinition }).catch(console.error);
       case UPPER:
-        return (await import('./actions/use-upper')).useUpper(includeDefinition).catch(console.error);
+        return (await import('./actions/use-upper')).useUpper({ includeDefinition }).catch(console.error);
       case LOWER:
-        return (await import('./actions/use-lower')).useLower(includeDefinition).catch(console.error);
+        return (await import('./actions/use-lower')).useLower({ includeDefinition }).catch(console.error);
       default:
         console.log('Answer not recognized');
         return inquirer.prompt(WHICH_MOD).then(handleWhichMod);
