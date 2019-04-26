@@ -1,4 +1,8 @@
 import { useTransformer } from '../helpers/use-transform';
 import { lowerTransformer } from '@graphql-reshape/transformers';
 
-export const useLower = (includeDefinition: boolean) => useTransformer(lowerTransformer, includeDefinition);
+interface Options {
+  includeDefinition?: boolean;
+}
+
+export const useLower = (userOptions: Options) => useTransformer(lowerTransformer, userOptions);

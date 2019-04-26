@@ -11,17 +11,18 @@ import {
 import { TransformerOutput, hasDirective } from '../helpers';
 
 const defaultOptions = {
-  includeDefinition: false
+  includeDefinition: false,
+  fieldNames: []
 };
 
-export type LowerTransformerOptions = Partial<typeof defaultOptions>;
+export type MaskTransformerOptions = Partial<typeof defaultOptions>;
 
 /**
- * Transforms: String -> String @lower
+ * Transforms: String -> String @mask
  * @param schema schema definition language
  * @param userOptions
  */
-export const lowerTransformer = (schema: string, userOptions: LowerTransformerOptions = {}): TransformerOutput => {
+export const maskTransformer = (schema: string, userOptions: MaskTransformerOptions = {}): TransformerOutput => {
   const options = { ...defaultOptions, ...userOptions };
   let ast;
   let addedDirective = false;
@@ -33,24 +34,38 @@ export const lowerTransformer = (schema: string, userOptions: LowerTransformerOp
     return [schema, false];
   }
 
-  // represents the "@lower" as an AST node
-  const lowerAsAST: DirectiveNode = {
+  // represents the "@mask" as an AST node
+  const maskAsAST: DirectiveNode = {
     kind: Kind.DIRECTIVE,
     name: {
       kind: Kind.NAME,
-      value: 'lower'
+      value: 'mask'
     },
-    arguments: []
+    arguments: [
+      {
+        kind: Kind.ARGUMENT,
+        name: { kind: Kind.NAME, value: 'showLast' },
+        value: { kind: Kind.INT, value: '4' }
+      }
+    ]
   };
 
-  // represents the "directive @lower on FIELD_DEFINITION" as an AST node
+  // represents the "directive @mask on FIELD_DEFINITION" as an AST node
   const directiveDef: DirectiveDefinitionNode = {
     kind: Kind.DIRECTIVE_DEFINITION,
     name: {
       kind: Kind.NAME,
-      value: 'lower'
+      value: 'mask'
     },
-    arguments: [],
+    arguments: [
+      {
+        kind: Kind.INPUT_VALUE_DEFINITION,
+        name: { kind: Kind.NAME, value: 'showLast' },
+        type: { kind: Kind.NAMED_TYPE, name: { kind: Kind.NAME, value: 'Int' } },
+        defaultValue: { kind: Kind.INT, value: '4' },
+        directives: []
+      }
+    ],
     locations: [{ kind: Kind.NAME, value: 'FIELD_DEFINITION' }]
   };
 
@@ -58,16 +73,31 @@ export const lowerTransformer = (schema: string, userOptions: LowerTransformerOp
   const visitor: Visitor<ASTKindToNode, ASTNode> = {
     [Kind.FIELD_DEFINITION]: {
       enter: (node: FieldDefinitionNode): any => {
-        if (node.type.kind === Kind.NAMED_TYPE && node.type.name.value === 'String' && !hasDirective('lower', node)) {
-          // if field is defined as String and does not already have lower directive skip node else enter node
+        if (node.type.kind === Kind.NAMED_TYPE && node.type.name.value === 'String' && !hasDirective('mask', node)) {
+          // if field is defined as String and does not already have mask directive skip node else enter node
           return undefined;
         } else if (
           node.type.kind === Kind.NON_NULL_TYPE &&
           node.type.type.kind === Kind.NAMED_TYPE &&
           node.type.type.name.value === 'String' &&
-          !hasDirective('lower', node)
+          !hasDirective('mask', node)
         ) {
-          // if field is defined as String! and does not already have lower directive skip node else enter node
+          // if field is defined as String! and does not already have mask directive skip node else enter node
+          return undefined;
+        } else if (
+          node.type.kind === Kind.NAMED_TYPE &&
+          node.type.name.value === 'Int' &&
+          !hasDirective('mask', node)
+        ) {
+          // if field is defined as Int and does not already have mask directive skip node else enter node
+          return undefined;
+        } else if (
+          node.type.kind === Kind.NON_NULL_TYPE &&
+          node.type.type.kind === Kind.NAMED_TYPE &&
+          node.type.type.name.value === 'Int' &&
+          !hasDirective('mask', node)
+        ) {
+          // if field is defined as Int! and does not already have mask directive skip node else enter node
           return undefined;
         } else {
           // skip the node
@@ -75,12 +105,12 @@ export const lowerTransformer = (schema: string, userOptions: LowerTransformerOp
         }
       },
       leave: (node: FieldDefinitionNode): any => {
-        // exiting the node we want to replace this node with the same node but with our lower added to the directives
+        // exiting the node we want to replace this node with the same node but with our mask added to the directives
         addedDirective = true;
         const originalDirectives = (Array.isArray(node.directives) && node.directives) || [];
         return {
           ...node,
-          ...{ directives: [lowerAsAST, ...originalDirectives] }
+          ...{ directives: [maskAsAST, ...originalDirectives] }
         };
       }
     }

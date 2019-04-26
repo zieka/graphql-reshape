@@ -1,13 +1,13 @@
-import { upperTransformer } from './upper.transformer';
+import { maskTransformer } from './mask.transformer';
 import { DocumentNode } from 'graphql';
 import { isDocumentNode, normalizeSchema } from '../helpers';
 
-describe('upperTransformer', () => {
+describe('maskTransformer', () => {
   it('should return original string if not parsable', () => {
     // Arrange
     const fixture = 'some string that is not a schema definition language (SDL)';
     // Act
-    const result = upperTransformer(fixture);
+    const result = maskTransformer(fixture);
     // Assert
     expect(result[0]).toEqual(fixture);
   });
@@ -23,15 +23,15 @@ describe('upperTransformer', () => {
         }
         `;
     // Act
-    const result = upperTransformer(fixture);
+    const result = maskTransformer(fixture);
     // Assert
     expect(isDocumentNode(result[0] as DocumentNode)).toEqual(true);
   });
-  it('should add upper directives to strings', () => {
+  it('should add mask directives to strings', () => {
     // Arrange
     const fixture = `
             type thing {
-                prop1: String
+                prop1: String 
                 prop2: String!
                 prop3: Int
                 prop4: Int!
@@ -40,14 +40,14 @@ describe('upperTransformer', () => {
             }
         `;
     // Act
-    const result = upperTransformer(fixture);
+    const result = maskTransformer(fixture);
     // Assert
     const expectedSchema = `
             type thing {
-              prop1: String @upper
-              prop2: String! @upper
-              prop3: Int
-              prop4: Int!
+              prop1: String @mask(showLast: 4)
+              prop2: String! @mask(showLast: 4)
+              prop3: Int @mask(showLast: 4)
+              prop4: Int! @mask(showLast: 4)
               prop5: [String]
               prop6: [String]!
             }
@@ -67,15 +67,15 @@ describe('upperTransformer', () => {
             }
         `;
     // Act
-    const result = upperTransformer(fixture, { includeDefinition: true });
+    const result = maskTransformer(fixture, { includeDefinition: true });
     // Assert
     const expectedSchema = `
-            directive @upper on FIELD_DEFINITION
+            directive @mask(showLast: Int = 4) on FIELD_DEFINITION
             type thing {
-              prop1: String @upper
-              prop2: String! @upper
-              prop3: Int
-              prop4: Int!
+              prop1: String @mask(showLast: 4)
+              prop2: String! @mask(showLast: 4)
+              prop3: Int @mask(showLast: 4)
+              prop4: Int! @mask(showLast: 4)
               prop5: [String]
               prop6: [String]!
             }
