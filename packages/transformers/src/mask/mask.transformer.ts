@@ -12,7 +12,7 @@ import { TransformerOutput, hasDirective } from '../helpers';
 
 const defaultOptions = {
   includeDefinition: false,
-  fieldNames: []
+  fieldNames: [] as String[]
 };
 
 export type MaskTransformerOptions = Partial<typeof defaultOptions>;
@@ -73,6 +73,14 @@ export const maskTransformer = (schema: string, userOptions: MaskTransformerOpti
   const visitor: Visitor<ASTKindToNode, ASTNode> = {
     [Kind.FIELD_DEFINITION]: {
       enter: (node: FieldDefinitionNode): any => {
+        if (options.fieldNames.includes(node.name.value) && !hasDirective('mask', node)) {
+          // only add directive to specific fields
+          return undefined;
+        }
+        if (options.fieldNames.length > 0) {
+          // if there are fieldNames they should have been handled before this so at this point we can exit
+          return false;
+        }
         if (node.type.kind === Kind.NAMED_TYPE && node.type.name.value === 'String' && !hasDirective('mask', node)) {
           // if field is defined as String and does not already have mask directive skip node else enter node
           return undefined;
