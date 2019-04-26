@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/zieka/graphql-reshape/compare/@graphql-reshape/cli@0.2.1...@graphql-reshape/cli@0.3.0) (2019-04-26)
+
+
+### Features
+
+* change transformers to accepting options object as second param ([9ab46b8](https://github.com/zieka/graphql-reshape/commit/9ab46b8))
+
+
+
+
+
 ## [0.2.1](https://github.com/zieka/graphql-reshape/compare/@graphql-reshape/cli@0.2.0...@graphql-reshape/cli@0.2.1) (2019-04-25)
 
 **Note:** Version bump only for package @graphql-reshape/cli
