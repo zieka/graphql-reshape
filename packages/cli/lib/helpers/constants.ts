@@ -30,4 +30,4 @@ export const UNDER_CONSTRUCTION = `${macOnly('🚧  ')}Under Construction`;
 export const ENSURE_ARRAY = `[x]! -> [x]! @ensureArray`;
 export const UPPER = `String -> String @upper`;
 export const LOWER = `String -> String @lower`;
-export const MASK = `String | Int -> String @mask(showLast: 4)`;
+export const MASK = `String | Int -> String! @mask(showLast: 4)`;

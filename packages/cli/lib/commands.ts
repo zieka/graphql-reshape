@@ -1,23 +1,15 @@
 import * as commander from 'commander';
-import { interactiveMenu } from './questions';
-import { UNDER_CONSTRUCTION } from './helpers/constants';
+import { interactiveMenu, modMenu } from './questions';
+
 import * as packageContents from '../package.json';
 
 // Mod Command
 commander
-  .command('mod [schemaMod] [sourcePath]')
+  .command('mod')
   .alias('m')
   .description(`Run a schema mod`)
-  .action(async (schemaMod: string, sourcePath: string) => {
-    try {
-      if (!schemaMod || !sourcePath) {
-        await interactiveMenu();
-        return;
-      }
-      console.log(`${UNDER_CONSTRUCTION}\nschemaMod: ${schemaMod}\nsourcePath: ${sourcePath}`);
-    } catch (err) {
-      console.error(err);
-    }
+  .action(() => {
+    modMenu();
   });
 
 // Version Command

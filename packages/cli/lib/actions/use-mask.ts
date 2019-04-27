@@ -6,6 +6,4 @@ interface Options {
   fieldNames?: String[];
 }
 
-console.log(maskTransformer);
-
 export const useMask = (userOptions: Options) => useTransformer(maskTransformer, userOptions);
