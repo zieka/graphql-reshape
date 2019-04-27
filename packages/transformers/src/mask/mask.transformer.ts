@@ -118,6 +118,12 @@ export const maskTransformer = (schema: string, userOptions: MaskTransformerOpti
         const originalDirectives = (Array.isArray(node.directives) && node.directives) || [];
         return {
           ...node,
+          ...{
+            type: {
+              kind: 'NonNullType',
+              type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
+            }
+          },
           ...{ directives: [maskAsAST, ...originalDirectives] }
         };
       }
