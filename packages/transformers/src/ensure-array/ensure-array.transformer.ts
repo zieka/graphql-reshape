@@ -11,7 +11,8 @@ import {
 import { TransformerOutput, hasDirective } from '../helpers';
 
 const defaultOptions = {
-  includeDefinition: false
+  includeDefinition: false,
+  fieldNames: [] as String[]
 };
 
 export type EnsureArrayTransformerOptions = Partial<typeof defaultOptions>;
@@ -60,6 +61,14 @@ export const ensureArrayTransformer = (
   const visitor: Visitor<ASTKindToNode, ASTNode> = {
     [Kind.FIELD_DEFINITION]: {
       enter: (node: FieldDefinitionNode): any => {
+        if (options.fieldNames.includes(node.name.value) && !hasDirective('ensureArray', node)) {
+          // only add directive to specific fields
+          return undefined;
+        }
+        if (options.fieldNames.length > 0) {
+          // if there are fieldNames they should have been handled before this so at this point we can exit
+          return false;
+        }
         if (
           node.type.kind === Kind.NON_NULL_TYPE &&
           node.type.type.kind === Kind.LIST_TYPE &&
