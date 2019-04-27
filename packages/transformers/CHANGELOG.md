@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/zieka/graphql-reshape/compare/@graphql-reshape/transformers@0.2.0...@graphql-reshape/transformers@0.3.0) (2019-04-27)
+
+
+### Features
+
+* **transformers:** add fieldNames option to all transformers ([fc525eb](https://github.com/zieka/graphql-reshape/commit/fc525eb))
+* **transformers:** change mask to tranform type to String! ([74628bc](https://github.com/zieka/graphql-reshape/commit/74628bc))
+
+
+
+
+
 # [0.2.0](https://github.com/zieka/graphql-reshape/compare/@graphql-reshape/transformers@0.1.1...@graphql-reshape/transformers@0.2.0) (2019-04-26)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/zieka/graphql-reshape/compare/@graphql-reshape/cli@0.3.0...@graphql-reshape/cli@0.4.0) (2019-04-27)
+
+
+### Features
+
+* **cli:** add specific field question for all mods ([86611fc](https://github.com/zieka/graphql-reshape/commit/86611fc))
+* **cli:** add use-mask ([1ce2a46](https://github.com/zieka/graphql-reshape/commit/1ce2a46))
+
+
+
+
+
 # [0.3.0](https://github.com/zieka/graphql-reshape/compare/@graphql-reshape/cli@0.2.1...@graphql-reshape/cli@0.3.0) (2019-04-26)
 
 
