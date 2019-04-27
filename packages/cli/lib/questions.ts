@@ -5,13 +5,13 @@ import {
   MOD,
   VERSION,
   QUIT,
-  UNDER_CONSTRUCTION,
   BACK,
   YES,
   NO,
   ENSURE_ARRAY,
   UPPER,
-  LOWER
+  LOWER,
+  MASK
 } from './helpers/constants';
 import * as packageContents from '../package.json';
 
@@ -41,7 +41,7 @@ const WHICH_MOD: Question = {
   type: LIST_TYPE,
   name: 'q1',
   message: 'What transform would you like to use?',
-  choices: [ENSURE_ARRAY, UPPER, LOWER]
+  choices: [ENSURE_ARRAY, UPPER, LOWER, MASK]
 };
 
 const INCLUDE_DIRECTIVE_DEFINITION: Question = {
@@ -49,6 +49,13 @@ const INCLUDE_DIRECTIVE_DEFINITION: Question = {
   name: 'q1',
   message: 'Would you like the definition for the directive added to schema?',
   choices: [YES, NO]
+};
+
+const FIELD_NAMES: Question = {
+  type: 'text',
+  name: 'q1',
+  message:
+    'Specific fields? (provide comma seperated list) \nNot providing a list will apply directive to all String and Int fields.'
 };
 
 const handleMainMenu = (answers: any): any => {
@@ -80,6 +87,11 @@ const handleWhichMod = (answers: any): any => {
         return (await import('./actions/use-upper')).useUpper({ includeDefinition }).catch(console.error);
       case LOWER:
         return (await import('./actions/use-lower')).useLower({ includeDefinition }).catch(console.error);
+      case MASK:
+        return inquirer.prompt(FIELD_NAMES).then(async (fieldsAnswers: any) => {
+          const fieldNames = fieldsAnswers.q1.split(',');
+          return (await import('./actions/use-mask')).useMask({ includeDefinition, fieldNames }).catch(console.error);
+        });
       default:
         console.log('Answer not recognized');
         return inquirer.prompt(WHICH_MOD).then(handleWhichMod);
