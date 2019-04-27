@@ -44,19 +44,20 @@ const WHICH_MOD: Question = {
   choices: [ENSURE_ARRAY, UPPER, LOWER, MASK]
 };
 
-const INCLUDE_DIRECTIVE_DEFINITION: Question = {
-  type: LIST_TYPE,
-  name: 'q1',
-  message: 'Would you like the definition for the directive added to schema?',
-  choices: [YES, NO]
-};
-
-const FIELD_NAMES: Question = {
-  type: 'text',
-  name: 'q1',
-  message:
-    'Specific fields? (provide comma seperated list) \nNot providing a list will apply directive to all String and Int fields.'
-};
+const FOLLOW_UP_QUESTIONS: Question[] = [
+  {
+    type: LIST_TYPE,
+    name: 'q1',
+    message: 'Would you like the definition for the directive added to schema?',
+    choices: [YES, NO]
+  },
+  {
+    type: 'text',
+    name: 'q2',
+    message:
+      'What specific field name(s) should be affected? (Provide comma seperated list) \n⚠️  Not providing a list will apply directive to all qualifying fields'
+  }
+];
 
 const handleMainMenu = (answers: any): any => {
   switch (answers.q1) {
@@ -78,20 +79,26 @@ const handleWhichMod = (answers: any): any => {
   if (answers.q1 === BACK) {
     return inquirer.prompt(MAIN_MENU).then(handleMainMenu);
   }
-  return inquirer.prompt(INCLUDE_DIRECTIVE_DEFINITION).then(async (followUpAnswers: any) => {
+  return inquirer.prompt(FOLLOW_UP_QUESTIONS).then(async (followUpAnswers: any) => {
     const includeDefinition = followUpAnswers.q1 === YES;
+    const fieldNames = followUpAnswers.q2.split(',').filter((field: String) => field !== '');
+    console.log(fieldNames);
+
     switch (answers.q1) {
       case ENSURE_ARRAY:
-        return (await import('./actions/use-ensure-array')).useEnsureArray({ includeDefinition }).catch(console.error);
+        return (await import('./actions/use-ensure-array'))
+          .useEnsureArray({ includeDefinition, fieldNames })
+          .catch(console.error);
+
       case UPPER:
-        return (await import('./actions/use-upper')).useUpper({ includeDefinition }).catch(console.error);
+        return (await import('./actions/use-upper')).useUpper({ includeDefinition, fieldNames }).catch(console.error);
+
       case LOWER:
-        return (await import('./actions/use-lower')).useLower({ includeDefinition }).catch(console.error);
+        return (await import('./actions/use-lower')).useLower({ includeDefinition, fieldNames }).catch(console.error);
+
       case MASK:
-        return inquirer.prompt(FIELD_NAMES).then(async (fieldsAnswers: any) => {
-          const fieldNames = fieldsAnswers.q1.split(',');
-          return (await import('./actions/use-mask')).useMask({ includeDefinition, fieldNames }).catch(console.error);
-        });
+        return (await import('./actions/use-mask')).useMask({ includeDefinition, fieldNames }).catch(console.error);
+
       default:
         console.log('Answer not recognized');
         return inquirer.prompt(WHICH_MOD).then(handleWhichMod);
@@ -103,4 +110,9 @@ const handleWhichMod = (answers: any): any => {
 export const interactiveMenu = async (): Promise<void> => {
   cleanPrompt();
   inquirer.prompt(MAIN_MENU).then(handleMainMenu);
+};
+
+export const modMenu = async (): Promise<void> => {
+  cleanPrompt();
+  inquirer.prompt(WHICH_MOD).then(handleWhichMod);
 };
