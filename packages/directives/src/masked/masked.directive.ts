@@ -7,10 +7,10 @@ export class MaskedCaseDirective extends SchemaDirectiveVisitor {
     const { showLast } = this.args;
     field.resolve = async (...args: any[]): Promise<string> => {
       const result = await resolve.apply(this, args);
-      // make sure target is a string
-      const target = typeof result === 'number' ? String(result) : typeof result === 'string' ? result : null;
-      // if target is not a string then return the original result
-      return target ? target.slice(-showLast).padStart(target.length, '*') : result;
+      // make sure target is a string or number
+      const target = typeof result === 'number' ? String(result) : typeof result === 'string' ? result : '';
+      // return the masked string
+      return target.slice(-showLast).padStart(target.length, '*');
     };
   }
 }
