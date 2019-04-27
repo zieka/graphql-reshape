@@ -31,7 +31,7 @@ describe('maskTransformer', () => {
     // Arrange
     const fixture = `
             type thing {
-                prop1: String 
+                prop1: String
                 prop2: String!
                 prop3: Int
                 prop4: Int!
@@ -44,10 +44,10 @@ describe('maskTransformer', () => {
     // Assert
     const expectedSchema = `
             type thing {
-              prop1: String @mask(showLast: 4)
+              prop1: String! @mask(showLast: 4)
               prop2: String! @mask(showLast: 4)
-              prop3: Int @mask(showLast: 4)
-              prop4: Int! @mask(showLast: 4)
+              prop3: String! @mask(showLast: 4)
+              prop4: String! @mask(showLast: 4)
               prop5: [String]
               prop6: [String]!
             }
@@ -72,10 +72,10 @@ describe('maskTransformer', () => {
     const expectedSchema = `
             directive @mask(showLast: Int = 4) on FIELD_DEFINITION
             type thing {
-              prop1: String @mask(showLast: 4)
+              prop1: String! @mask(showLast: 4)
               prop2: String! @mask(showLast: 4)
-              prop3: Int @mask(showLast: 4)
-              prop4: Int! @mask(showLast: 4)
+              prop3: String! @mask(showLast: 4)
+              prop4: String! @mask(showLast: 4)
               prop5: [String]
               prop6: [String]!
             }
@@ -99,10 +99,10 @@ describe('maskTransformer', () => {
     // Assert
     const expectedSchema = `
             type thing {
-              prop1: String @mask(showLast: 4)
+              prop1: String! @mask(showLast: 4)
               prop2: String!
               prop3: Int
-              prop4: Int! @mask(showLast: 4)
+              prop4: String! @mask(showLast: 4)
               prop5: [String]
               prop6: [String]!
             }
