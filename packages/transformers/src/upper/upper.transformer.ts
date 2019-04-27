@@ -11,7 +11,8 @@ import {
 import { TransformerOutput, hasDirective } from '../helpers';
 
 const defaultOptions = {
-  includeDefinition: false
+  includeDefinition: false,
+  fieldNames: [] as String[]
 };
 
 export type UpperTransformerOptions = Partial<typeof defaultOptions>;
@@ -58,6 +59,14 @@ export const upperTransformer = (schema: string, userOptions: UpperTransformerOp
   const visitor: Visitor<ASTKindToNode, ASTNode> = {
     [Kind.FIELD_DEFINITION]: {
       enter: (node: FieldDefinitionNode): any => {
+        if (options.fieldNames.includes(node.name.value) && !hasDirective('lower', node)) {
+          // only add directive to specific fields
+          return undefined;
+        }
+        if (options.fieldNames.length > 0) {
+          // if there are fieldNames they should have been handled before this so at this point we can exit
+          return false;
+        }
         if (node.type.kind === Kind.NAMED_TYPE && node.type.name.value === 'String' && !hasDirective('upper', node)) {
           // if field is defined as String and does not already have upper directive skip node else enter node
           return undefined;

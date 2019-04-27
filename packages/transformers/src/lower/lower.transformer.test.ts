@@ -82,4 +82,31 @@ describe('lowerTransformer', () => {
         `;
     expect(normalizeSchema(result[0])).toEqual(normalizeSchema(expectedSchema));
   });
+  it('should add directive definition only to specificed fields', () => {
+    // Arrange
+    const fixture = `
+            type thing {
+              prop1: String
+              prop2: String!
+              prop3: Int
+              prop4: Int!
+              prop5: [String]
+              prop6: [String]!
+            }
+        `;
+    // Act
+    const result = lowerTransformer(fixture, { fieldNames: ['prop1', 'prop4'] });
+    // Assert
+    const expectedSchema = `
+            type thing {
+              prop1: String @lower
+              prop2: String!
+              prop3: Int
+              prop4: Int! @lower
+              prop5: [String]
+              prop6: [String]!
+            }
+        `;
+    expect(normalizeSchema(result[0])).toEqual(normalizeSchema(expectedSchema));
+  });
 });

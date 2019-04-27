@@ -74,4 +74,31 @@ describe('ensureArrayTransformer', () => {
         `;
     expect(normalizeSchema(result[0])).toEqual(normalizeSchema(expectedSchema));
   });
+  it('should add directive definition only to specificed fields', () => {
+    // Arrange
+    const fixture = `
+            type thing {
+              prop1: String
+              prop2: String!
+              prop3: Int
+              prop4: Int!
+              prop5: [String]
+              prop6: [String]!
+            }
+        `;
+    // Act
+    const result = ensureArrayTransformer(fixture, { fieldNames: ['prop1', 'prop4'] });
+    // Assert
+    const expectedSchema = `
+            type thing {
+              prop1: String @ensureArray
+              prop2: String!
+              prop3: Int
+              prop4: Int! @ensureArray
+              prop5: [String]
+              prop6: [String]!
+            }
+        `;
+    expect(normalizeSchema(result[0])).toEqual(normalizeSchema(expectedSchema));
+  });
 });
