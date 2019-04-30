@@ -1,7 +1,7 @@
 {
   "name": "@graphql-reshape/directives",
   "description": "A collection of custom graphql directives",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": {
     "name": "Kyle Scully",
     "url": "https://github.com/zieka"
