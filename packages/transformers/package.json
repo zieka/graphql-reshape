@@ -2,7 +2,13 @@
   "name": "@graphql-reshape/transformers",
   "description": "A collections of transformers that parse graphql schema definition language, add specific directives to qualifying fields, and return the parsed document",
   "version": "0.4.1",
-  "author": "Kyle Scully",
+  "author": {
+    "name": "Kyle Scully",
+    "url": "https://github.com/zieka"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./dist/index.js",
   "keywords": [
     "graphql",
@@ -15,7 +21,7 @@
     "schema"
   ],
   "license": "MIT",
-  "repository": "https://github.com/zieka/graphql-reshape/packages/transformers",
+  "repository": "https://github.com/zieka/graphql-reshape/tree/master/packages/transformers",
   "scripts": {
     "build": "tsc",
     "check-types": "tsc --noEmit",

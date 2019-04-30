@@ -4,7 +4,13 @@
 	"private": true,
 	"license": "MIT",
 	"repository": "https://github.com/zieka/graphql-reshape",
-	"author": "Kyle Scully",
+	"author": {
+		"name": "Kyle Scully",
+		"url": "https://github.com/zieka"
+	  },
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"build": "lerna run build",
 		"check-types": "tsc --noEmit",

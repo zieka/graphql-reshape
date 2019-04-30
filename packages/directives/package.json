@@ -2,7 +2,13 @@
   "name": "@graphql-reshape/directives",
   "description": "A collection of custom graphql directives",
   "version": "0.3.1",
-  "author": "Kyle Scully",
+  "author": {
+    "name": "Kyle Scully",
+    "url": "https://github.com/zieka"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./dist/index.js",
   "keywords": [
     "graphql",
@@ -15,7 +21,7 @@
     "schema"
   ],
   "license": "MIT",
-  "repository": "https://github.com/zieka/graphql-reshape/packages/directives",
+  "repository": "https://github.com/zieka/graphql-reshape/tree/master/packages/directives",
   "scripts": {
     "build": "tsc",
     "check-types": "tsc --noEmit",

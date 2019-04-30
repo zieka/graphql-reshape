@@ -2,7 +2,13 @@
   "name": "@graphql-reshape/cli",
   "description": "A cli for quickly applying custom directives to your graphql schema files",
   "version": "0.5.1",
-  "author": "Kyle Scully",
+  "author": {
+    "name": "Kyle Scully",
+    "url": "https://github.com/zieka"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "reshape": "./index.js"
   },
@@ -17,7 +23,7 @@
     "schema"
   ],
   "license": "MIT",
-  "repository": "https://github.com/zieka/graphql-reshape/packages/cli",
+  "repository": "https://github.com/zieka/graphql-reshape/tree/master/packages/cli",
   "scripts": {
     "build": "tsc",
     "check-types": "tsc --noEmit",

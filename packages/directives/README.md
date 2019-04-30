@@ -1,6 +1,6 @@
 # @graphql-reshape/directives
 
-<p align="center"><img src="https://github.com/zieka/graphql-reshape/raw/master/graphql-reshape-logo.svg?sanitize=true" width="300px" alt="GraphQL Reshape Logo"></p>
+<p align="center" style="margin-top: 3rem;"><img src="https://github.com/zieka/graphql-reshape/raw/master/graphql-reshape-logo.svg?sanitize=true" width="300px" alt="GraphQL Reshape Logo"></p>
 
 ## How to install
 
