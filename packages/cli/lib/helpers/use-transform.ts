@@ -1,5 +1,3 @@
-// Adds @ensureArray directive to all non nullable lists
-// [things!]! -> [things!]! @ensureArray
 import { print, DocumentNode } from 'graphql';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -13,7 +11,7 @@ type ReshapeTransformer = (schema: string, options: any) => [string | DocumentNo
 
 export const useTransformer = async (transformer: ReshapeTransformer, options = {}): Promise<boolean> => {
   /**
-   * Gathers the .graphql files and adds ensureArray directive to non nullable lists
+   * Gathers the .graphql files and applies the transformer to them
    * @param {*} file
    */
   const read = async (file: string): Promise<any> => {
