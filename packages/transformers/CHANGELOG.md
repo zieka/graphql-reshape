@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2019-04-30)
+
+
+### Features
+
+* **transformers:** add ensureArray, upper, and lower ([db3ba78](https://github.com/zieka/graphql-reshape/packages/transformers/commit/db3ba78))
+* change transformers to accepting options object as second param ([871e939](https://github.com/zieka/graphql-reshape/packages/transformers/commit/871e939))
+* **transformers:** add fieldNames option to all transformers ([0a97434](https://github.com/zieka/graphql-reshape/packages/transformers/commit/0a97434))
+* **transformers:** add fieldNames option to mask transformer ([8ea8067](https://github.com/zieka/graphql-reshape/packages/transformers/commit/8ea8067))
+* **transformers:** change mask to tranform type to String! ([56ed94b](https://github.com/zieka/graphql-reshape/packages/transformers/commit/56ed94b))
+
+
+
+
+
 # [0.3.0](https://github.com/zieka/graphql-reshape/compare/@graphql-reshape/transformers@0.2.0...@graphql-reshape/transformers@0.3.0) (2019-04-27)
 
 

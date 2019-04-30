@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2019-04-30)
+
+
+### Features
+
+* **cli:** add ensureArray, upper, and lower ([70497cb](https://github.com/zieka/graphql-reshape/packages/cli/commit/70497cb))
+* change transformers to accepting options object as second param ([871e939](https://github.com/zieka/graphql-reshape/packages/cli/commit/871e939))
+* **cli:** add specific field question for all mods ([3ec8608](https://github.com/zieka/graphql-reshape/packages/cli/commit/3ec8608))
+* **cli:** add use-mask ([37990a8](https://github.com/zieka/graphql-reshape/packages/cli/commit/37990a8))
+* **cli:** fix version commands ([f90b696](https://github.com/zieka/graphql-reshape/packages/cli/commit/f90b696))
+
+
+
+
+
 # [0.4.0](https://github.com/zieka/graphql-reshape/compare/@graphql-reshape/cli@0.3.0...@graphql-reshape/cli@0.4.0) (2019-04-27)
 
 
