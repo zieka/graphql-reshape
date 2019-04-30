@@ -1,5 +1,6 @@
 {
   "name": "@graphql-reshape/cli",
+  "description": "A cli for quickly applying custom directives to your graphql schema files",
   "version": "0.5.0",
   "author": "Kyle Scully",
   "bin": {

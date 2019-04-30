@@ -5,4 +5,30 @@
 
 # graphql-reshape
 
-A tool for modifying schema
+Tools for modifying graphql schema
+
+## Packages
+
+### @graphql-reshape/directives
+
+A collection of custom graphql directives
+
+```
+npm i @graphql-reshape/directives
+```
+
+### @graphql-reshape/transformers
+
+A collections of transformers that parse graphql schema definition language, add specific directives to qualifying fields, and return the parsed document
+
+```
+npm i @graphql-reshape/transformers
+```
+
+### @graphql-reshape/cli
+
+A cli for quickly applying custom directives to your graphql schema files
+
+```
+npm i -g @graphql-reshape/cli
+```

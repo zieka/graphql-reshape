@@ -1,5 +1,6 @@
 {
 	"name": "graphql-reshape",
+	"description": "Tools for modifying graphql schema",
 	"private": true,
 	"license": "MIT",
 	"repository": "https://github.com/zieka/graphql-reshape",

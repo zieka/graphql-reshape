@@ -5,7 +5,7 @@
 ## How to install
 
 ```
-npm i -g @graphql-reshape/directives
+npm i @graphql-reshape/directives
 ```
 
 ## How to use

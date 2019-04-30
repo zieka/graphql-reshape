@@ -1,5 +1,6 @@
 {
   "name": "@graphql-reshape/directives",
+  "description": "A collection of custom graphql directives",
   "version": "0.3.0",
   "author": "Kyle Scully",
   "main": "./dist/index.js",

@@ -5,7 +5,7 @@
 ## How to install
 
 ```
-npm i -g @graphql-reshape/transformers
+npm i @graphql-reshape/transformers
 ```
 
 ## string -> [DocumentNode | string , boolean]
