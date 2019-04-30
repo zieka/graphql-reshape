@@ -1,7 +1,7 @@
 import { GraphQLField, defaultFieldResolver } from 'graphql';
 import { SchemaDirectiveVisitor } from 'graphql-tools';
 
-export class UpperCaseDirective extends SchemaDirectiveVisitor {
+export class UpperDirective extends SchemaDirectiveVisitor {
   visitFieldDefinition(field: GraphQLField<any, any>): void {
     const { resolve = defaultFieldResolver } = field;
     field.resolve = async function(...args: any[]): Promise<string> {

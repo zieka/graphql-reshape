@@ -1,7 +1,7 @@
 import { GraphQLField, defaultFieldResolver } from 'graphql';
 import { SchemaDirectiveVisitor } from 'graphql-tools';
 
-export class MaskedCaseDirective extends SchemaDirectiveVisitor {
+export class MaskedDirective extends SchemaDirectiveVisitor {
   visitFieldDefinition(field: GraphQLField<any, any>): void {
     const { resolve = defaultFieldResolver } = field;
     const { showLast } = this.args;
