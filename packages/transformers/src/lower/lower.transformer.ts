@@ -15,6 +15,8 @@ const defaultOptions = {
   fieldNames: [] as String[]
 };
 
+// blah
+
 export type LowerTransformerOptions = Partial<typeof defaultOptions>;
 
 /**
@@ -39,7 +41,7 @@ export const lowerTransformer = (schema: string, userOptions: LowerTransformerOp
     kind: Kind.DIRECTIVE,
     name: {
       kind: Kind.NAME,
-      value: 'lowers'
+      value: 'lower'
     },
     arguments: []
   };
