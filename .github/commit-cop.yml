@@ -1,0 +1,5 @@
+requireTitle: true
+requireCommits: 'all'
+requirePrBreakingChangeColon: true
+requireCommitBreakingChangeColon: true
+requireJira: false
