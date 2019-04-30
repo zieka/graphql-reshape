@@ -3,3 +3,4 @@ node_modules
 packages/cli/**/*.js
 packages/cli/**/*.js.map
 packages/cli/index.js
+coverage

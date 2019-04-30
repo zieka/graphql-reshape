@@ -7,7 +7,7 @@
 	"author": {
 		"name": "Kyle Scully",
 		"url": "https://github.com/zieka"
-	  },
+	},
 	"publishConfig": {
 		"access": "public"
 	},
@@ -17,7 +17,8 @@
 		"prettier-check": "prettier --config package.json --list-different '{,**/}*.{js,ts,json,graphql}'",
 		"prettier-format": "prettier --config package.json --write '{,**/}*.{js,ts,json,graphql}'",
 		"publish": "npm run build && lerna publish",
-		"test": "jest"
+		"test": "jest",
+		"test:ci": "jest --ci --runInBand --coverage --bail"
 	},
 	"devDependencies": {
 		"@graphql-reshape/directives": "file:packages/directives",
@@ -60,7 +61,9 @@
 			".*\\.d\\.ts",
 			"/node_modules/",
 			"/dist/",
-			"/coverage/"
+			"/coverage/",
+			"index.ts",
+			"constants.ts"
 		],
 		"transform": {
 			"^.+\\.tsx?$": "ts-jest"
