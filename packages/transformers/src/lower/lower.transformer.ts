@@ -39,7 +39,7 @@ export const lowerTransformer = (schema: string, userOptions: LowerTransformerOp
     kind: Kind.DIRECTIVE,
     name: {
       kind: Kind.NAME,
-      value: 'lower'
+      value: 'lowers'
     },
     arguments: []
   };
