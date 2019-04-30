@@ -1,7 +1,7 @@
 {
   "name": "@graphql-reshape/transformers",
   "description": "A collections of transformers that parse graphql schema definition language, add specific directives to qualifying fields, and return the parsed document",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "Kyle Scully",
   "main": "./dist/index.js",
   "keywords": [
