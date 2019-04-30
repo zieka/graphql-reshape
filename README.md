@@ -5,4 +5,4 @@
 
 # graphql-reshape
 
-Tools for reshaping and refining your GraphQL schema
+A tool for modifying schema
