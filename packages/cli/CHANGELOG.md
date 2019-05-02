@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/zieka/graphql-reshape/tree/master/packages/cli/compare/@graphql-reshape/cli@0.5.3...@graphql-reshape/cli@0.6.0) (2019-05-02)
+
+
+### Features
+
+* **cli:** add custom directive option ([b1f5fd5](https://github.com/zieka/graphql-reshape/tree/master/packages/cli/commit/b1f5fd5))
+
+
+
+
+
 ## [0.5.3](https://github.com/zieka/graphql-reshape/tree/master/packages/cli/compare/@graphql-reshape/cli@0.5.2...@graphql-reshape/cli@0.5.3) (2019-04-30)
 
 **Note:** Version bump only for package @graphql-reshape/cli

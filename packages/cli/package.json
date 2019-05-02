@@ -1,7 +1,7 @@
 {
   "name": "@graphql-reshape/cli",
   "description": "A cli for quickly applying custom directives to your graphql schema files",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "author": {
     "name": "Kyle Scully",
     "url": "https://github.com/zieka"
