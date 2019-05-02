@@ -19,7 +19,8 @@ export const ASCII_LOGO = magenta.bold(`
 export const LIST_TYPE = process.platform === 'win32' ? 'rawlist' : 'list';
 
 export const QUIT = `${macOnly('🚫  ')}Exit Interactive CLI`;
-export const MOD = `${macOnly('🔥  ')}Run Mod`;
+export const MOD = `${macOnly('🔥  ')}Apply a graphql-reshape directive`;
+export const CUSTOM_MOD = `${macOnly('💬  ')}Apply your own custom directive`;
 export const VERSION = `${macOnly('✅  ')}Display version number`;
 export const BACK = `${macOnly('⏪  ')}Go Back`;
 export const YES = `${macOnly('✅  ')}Yes`;

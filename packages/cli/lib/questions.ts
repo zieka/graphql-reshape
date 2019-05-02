@@ -11,7 +11,8 @@ import {
   ENSURE_ARRAY,
   UPPER,
   LOWER,
-  MASK
+  MASK,
+  CUSTOM_MOD
 } from './helpers/constants';
 import * as packageContents from '../package.json';
 
@@ -33,7 +34,7 @@ const MAIN_MENU: Question[] = [
     type: LIST_TYPE,
     name: 'q1',
     message: 'What would you like RESHAPE to help you with?',
-    choices: [MOD, VERSION, QUIT]
+    choices: [MOD, CUSTOM_MOD, VERSION, QUIT]
   }
 ];
 
@@ -59,10 +60,25 @@ const FOLLOW_UP_QUESTIONS: Question[] = [
   }
 ];
 
+const CUSTOM_MOD_Q: Question[] = [
+  {
+    type: 'text',
+    name: 'q1',
+    message: 'What specific field name(s) should be affected? (Provide comma seperated list)'
+  },
+  {
+    type: 'text',
+    name: 'q2',
+    message: 'Enter the directive(s) to add to these fields Example: @retry(count: 1) @authorize'
+  }
+];
+
 const handleMainMenu = (answers: any): any => {
   switch (answers.q1) {
     case MOD:
       return inquirer.prompt(WHICH_MOD).then(handleWhichMod);
+    case CUSTOM_MOD:
+      return inquirer.prompt(CUSTOM_MOD_Q).then(handleCustomMod);
     case VERSION:
       return console.log(packageContents.version);
     case QUIT:
@@ -104,6 +120,12 @@ const handleWhichMod = (answers: any): any => {
         return inquirer.prompt(WHICH_MOD).then(handleWhichMod);
     }
   });
+};
+
+const handleCustomMod = async (answers: any): Promise<any> => {
+  return (await import('./actions/use-apply-directive-to-field'))
+    .useDirectiveToFieldTransformer({ fieldNames: answers.q1, directive: answers.q2 })
+    .catch(console.error);
 };
 
 // root launch point
