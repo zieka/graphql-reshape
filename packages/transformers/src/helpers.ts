@@ -1,5 +1,5 @@
 import { DocumentNode, ASTNode, print, parse } from 'graphql';
-import { Kind, FieldDefinitionNode, DirectiveDefinitionNode } from 'graphql/language';
+import { Kind, FieldDefinitionNode, DirectiveDefinitionNode, DirectiveNode } from 'graphql/language';
 
 export const isNode = (maybeNode: any): maybeNode is ASTNode => {
   return maybeNode && typeof maybeNode.kind === 'string';
@@ -30,4 +30,20 @@ export const hasDirective = (targetDirective: string, node: FieldDefinitionNode)
       }
     )
   );
+};
+
+export const directiveAsAst = (target: string): DirectiveNode[] => {
+  const test = `
+  type thing {
+    prop1: String ${target}
+  }
+`;
+
+  try {
+    const testAsAst: any = parse(test, { noLocation: true });
+    return testAsAst.definitions[0].fields[0].directives as DirectiveNode[];
+  } catch (e) {
+    console.error(`Directive '${target}' could not be parsed.`);
+    return [];
+  }
 };
