@@ -40,6 +40,9 @@
 		"typescript": "3.4.4",
 		"util.promisify": "^1.0.0"
 	},
+	"resolutions": {
+		"tar": "4.4.8"
+	},
 	"prettier": {
 		"arrowParens": "always",
 		"bracketSpacing": true,
