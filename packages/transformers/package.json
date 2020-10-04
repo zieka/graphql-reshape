@@ -29,8 +29,8 @@
     "prettier-format": "prettier --config package.json --write '{,**/}*.{js,ts,json,graphql}'"
   },
   "peerDependencies": {
-    "graphql": "^14.1.1",
-    "graphql-tools": "^4.0.4"
+    "graphql": ">= 14.1.1",
+    "graphql-tools": ">= 4.0.4"
   },
   "prettier": {
     "printWidth": 120,
