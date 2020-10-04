@@ -4,7 +4,11 @@
   "command": {
     "publish": {
       "registry": "https://registry.npmjs.org/",
-      "conventionalCommits": true
+      "conventionalCommits": true,
+      "allowBranch": ["main"]
+    },
+    "version": {
+      "allowBranch": ["main"]
     }
   }
 }
