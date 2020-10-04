@@ -54,7 +54,8 @@ export const ensureArrayTransformer = (
       value: 'ensureArray'
     },
     arguments: [],
-    locations: [{ kind: Kind.NAME, value: 'FIELD_DEFINITION' }]
+    locations: [{ kind: Kind.NAME, value: 'FIELD_DEFINITION' }],
+    repeatable: false
   };
 
   // when we walk the AST this visitor defines where we stop and what we do at each node

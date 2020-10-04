@@ -1,4 +1,4 @@
-import { print, DocumentNode } from 'graphql';
+import { print, DocumentNode, ASTNode } from 'graphql';
 import * as path from 'path';
 import * as fs from 'fs';
 import globby from 'globby';
@@ -15,30 +15,28 @@ export const useTransformer = async (transformer: ReshapeTransformer, options = 
    * @param {*} file
    */
   const read = async (file: string): Promise<any> => {
-    return new Promise(
-      (resolve: any): void => {
-        const fileStream = fs.createReadStream(file, { encoding: 'utf8' });
-        fileStream.on('data', (data: any) => {
-          // clean the file path so it is relative to project for ease of reading
-          const [newAST, addedDirective] = transformer(data, options);
-          if (addedDirective) {
-            const newData = new Uint8Array(Buffer.from(print(newAST)));
-            fs.writeFile(file, newData, (err: NodeJS.ErrnoException) => {
-              if (err) {
-                throw err;
-              }
-              const shortFilePath = file.replace(cwd, '');
-              // notify console that this file is being changed
-              console.log(green(shortFilePath));
-            });
-          }
-        });
+    return new Promise((resolve: any): void => {
+      const fileStream = fs.createReadStream(file, { encoding: 'utf8' });
+      fileStream.on('data', (data: any) => {
+        // clean the file path so it is relative to project for ease of reading
+        const [newAST, addedDirective] = transformer(data, options);
+        if (addedDirective) {
+          const newData = new Uint8Array(Buffer.from(print(newAST as ASTNode)));
+          fs.writeFile(file, newData, (err: NodeJS.ErrnoException) => {
+            if (err) {
+              throw err;
+            }
+            const shortFilePath = file.replace(cwd, '');
+            // notify console that this file is being changed
+            console.log(green(shortFilePath));
+          });
+        }
+      });
 
-        fileStream.on('close', () => {
-          resolve(true);
-        });
-      }
-    );
+      fileStream.on('close', () => {
+        resolve(true);
+      });
+    });
   };
   // gather graphql files
   const filePaths = await globby([

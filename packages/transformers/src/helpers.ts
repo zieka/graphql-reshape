@@ -11,7 +11,7 @@ export const isDocumentNode = (node: ASTNode): node is DocumentNode => {
 
 export const normalizeSchema = (target: DocumentNode | string): string => {
   if (isDocumentNode(target as DocumentNode)) {
-    return print(target);
+    return print(target as DocumentNode);
   }
   if (typeof target === 'string') {
     return print(parse(target, { noLocation: true }));

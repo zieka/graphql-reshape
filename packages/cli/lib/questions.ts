@@ -38,12 +38,12 @@ const MAIN_MENU: Question[] = [
   }
 ];
 
-const WHICH_MOD: Question = {
+const WHICH_MOD: Question[] = [{
   type: LIST_TYPE,
   name: 'q1',
   message: 'What transform would you like to use?',
   choices: [ENSURE_ARRAY, UPPER, LOWER, MASK]
-};
+}];
 
 const FOLLOW_UP_QUESTIONS: Question[] = [
   {
@@ -56,7 +56,7 @@ const FOLLOW_UP_QUESTIONS: Question[] = [
     type: 'text',
     name: 'q2',
     message:
-      'What specific field name(s) should be affected? (Provide comma seperated list) \n⚠️  Not providing a list will apply directive to all qualifying fields'
+      'What specific field name(s) should be affected? (Provide comma separated list) \n⚠️  Not providing a list will apply directive to all qualifying fields'
   }
 ];
 
@@ -64,7 +64,7 @@ const CUSTOM_MOD_Q: Question[] = [
   {
     type: 'text',
     name: 'q1',
-    message: 'What specific field name(s) should be affected? (Provide comma seperated list)'
+    message: 'What specific field name(s) should be affected? (Provide comma separated list)'
   },
   {
     type: 'text',
