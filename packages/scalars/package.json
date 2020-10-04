@@ -1,0 +1,51 @@
+{
+  "name": "@graphql-reshape/scalars",
+  "description": "A collections of custom graphql scalars",
+  "version": "0.1.0",
+  "author": {
+    "name": "Kyle Scully",
+    "url": "https://github.com/zieka"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "keywords": [
+    "graphql",
+    "reshape",
+    "scalar",
+    "scalars",
+    "@graphql-reshape",
+    "@graphql-reshape/scalars",
+    "mod",
+    "schema"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/zieka/graphql-reshape/tree/master/packages/scalars",
+  "scripts": {
+    "build": "tsc",
+    "check-types": "tsc --noEmit",
+    "prettier-check": "prettier --config package.json --list-different '{,**/}*.{js,ts,json,graphql}'",
+    "prettier-format": "prettier --config package.json --write '{,**/}*.{js,ts,json,graphql}'"
+  },
+  "peerDependencies": {
+    "graphql": ">= 14.1.1",
+    "graphql-tools": ">= 4.0.4"
+  },
+  "dependencies": {
+    "graphql-type-json": "0.3.2",
+    "graphql-scalar-html": "1.0.0"
+
+  },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": true,
+    "arrowParens": "always"
+  }
+}
