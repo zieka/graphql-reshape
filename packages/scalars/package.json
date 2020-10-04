@@ -1,7 +1,7 @@
 {
   "name": "@graphql-reshape/scalars",
   "description": "A collections of custom graphql scalars",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "Kyle Scully",
     "url": "https://github.com/zieka"
@@ -33,9 +33,8 @@
     "graphql-tools": ">= 4.0.4"
   },
   "dependencies": {
-    "graphql-type-json": "0.3.2",
-    "graphql-scalar-html": "1.0.0"
-
+    "graphql-scalar-html": "1.0.0",
+    "graphql-type-json": "0.3.2"
   },
   "prettier": {
     "printWidth": 120,
