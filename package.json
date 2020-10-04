@@ -23,6 +23,7 @@
 	"devDependencies": {
 		"@graphql-reshape/directives": "file:packages/directives",
 		"@graphql-reshape/transformers": "file:packages/transformers",
+		"@graphql-reshape/scalars": "file:packages/scalars",
 		"@types/inquirer": "7.3.1",
 		"@types/jest": "26.0.14",
 		"@types/node": "11.11.3",
