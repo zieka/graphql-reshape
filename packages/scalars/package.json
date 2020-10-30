@@ -1,7 +1,7 @@
 {
   "name": "@graphql-reshape/scalars",
   "description": "A collections of custom graphql scalars",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "Kyle Scully",
     "url": "https://github.com/zieka"
