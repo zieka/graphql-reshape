@@ -3,3 +3,8 @@ requireCommits: 'all'
 requirePrBreakingChangeColon: true
 requireCommitBreakingChangeColon: true
 requireJira: false
+allowedScopes:
+  - 'cli'
+  - 'directives'
+  - 'scalars'
+  - 'transformers'
