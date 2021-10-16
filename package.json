@@ -2,7 +2,7 @@
 	"name": "graphql-reshape",
 	"description": "Tools for modifying graphql schema",
 	"private": true,
-	"license": "MIT",
+	"license": "(MIT OR Apache-2.0)",
 	"repository": "https://github.com/zieka/graphql-reshape",
 	"author": {
 		"name": "Kyle Scully",
