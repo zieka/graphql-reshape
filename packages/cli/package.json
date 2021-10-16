@@ -22,7 +22,7 @@
     "mod",
     "schema"
   ],
-  "license": "MIT",
+  "license": "(MIT OR Apache-2.0)",
   "repository": "https://github.com/zieka/graphql-reshape/tree/master/packages/cli",
   "scripts": {
     "build": "tsc",
