@@ -5,6 +5,6 @@ requireCommitBreakingChangeColon: true
 requireJira: false
 allowedScopes:
   - 'cli'
-  - 'directives'
-  - 'scalars'
-  - 'transformers'
+   - 'directives'
+    - 'scalars'
+     - 'transformers'
