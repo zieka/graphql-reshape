@@ -1,6 +1,8 @@
+[![automatic remediation: Moderne.io](https://img.shields.io/badge/automatic%20remediation-moderne.io-%2333ff99)](https://app.moderne.io/organizations/zieka/graphql-reshape)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 [![CircleCI](https://circleci.com/gh/zieka/graphql-reshape.svg?style=svg)](https://circleci.com/gh/zieka/graphql-reshape)
+
 
 <p align="center"><img src="./graphql-reshape-logo.svg" width="500px" alt="GraphQL Reshape Logo"></p>
 
